@@ -58,7 +58,7 @@ type realpath &> /dev/null
 case $? in
   0) ;;
   *) echo "Missing realpath program, please install it!"
-     exit ;;
+     exit 2 ;;
 esac
 
 LOCATION_FILE=$(realpath $LOCATION_FILE)
@@ -69,7 +69,7 @@ type /usr/local/bin/geoip2-csv-converter &> /dev/null
 case $? in
   0) ;;
   *) echo "Missing geoip2-csv-converter script, see setup-maxmind-converter.sh!"
-     exit ;;
+     exit 2 ;;
 esac
 
 echo " * Convert block file"
