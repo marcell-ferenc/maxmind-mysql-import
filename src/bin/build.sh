@@ -54,6 +54,13 @@ case ${BLOCK_FILE##*/} in
      exit 2 ;;
 esac
 
+type realpath &> /dev/null
+case $? in
+  0) ;;
+  *) echo "Missing realpath program, please install it!"
+     exit ;;
+esac
+
 LOCATION_FILE=$(realpath $LOCATION_FILE)
 BLOCK_FILE=$(realpath $BLOCK_FILE)
 BLOCK_FILE_MOD=$BLOCK_FILE.mod
