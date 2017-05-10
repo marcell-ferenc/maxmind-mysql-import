@@ -31,7 +31,7 @@ FROM (
         geoname_id,
         network_start_integer - @diff AS diff,
         NULL AS new_geoname_id,
-        (network_start_integer - (network_start_integer - @diff) + 1) AS gap_start_integer,
+        @diff + 1 AS gap_start_integer,
         (network_start_integer - 1) AS gap_end_integer,
         @diff := network_last_integer AS ref
     FROM blocks
